@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de Finca</title>
-    <link rel="stylesheet" href="eslilos.css"> 
+    <link rel="stylesheet" href="estilos.css"> 
 </head>
 <body>
 
     <h1>Sistema de Gestión Agrícola</h1>
 
-    <div id="welcomeSection" class="main-container">
+    <div id="welcomeSection" class="main-container visible">
         <h2>Bienvenido</h2>
         <p>Por favor, inicie sesión o regístrese.</p>
         <button id="showLoginBtn">Iniciar Sesión</button>
@@ -63,8 +63,7 @@
             <button type="submit">Crear Usuario</button>
             <p id="mensajeAdminCrearUsuario" class="message"></p>
         </form>
-        <div id="listaUsuarios">
-        </div>
+        <div id="listaUsuarios"></div>
 
         <hr>
 
@@ -77,8 +76,7 @@
             <button type="submit">Crear Terreno</button>
             <p id="mensajeAdminCrearTerreno" class="message"></p>
         </form>
-        <div id="listaTerrenos">
-        </div>
+        <div id="listaTerrenos"></div>
 
         <hr>
 
@@ -113,7 +111,7 @@
         <button id="logoutCampesinoBtn" style="background-color: #dc3545;">Cerrar Sesión</button>
     </div>
 
-    <!-- Contenedor para las hojas flotantes -->
+    <!-- Hojas flotantes -->
     <div class="leaf-container">
         <div class="leaf" style="--i: 1;"></div>
         <div class="leaf" style="--i: 2;"></div>
@@ -123,7 +121,6 @@
         <div class="leaf" style="--i: 6;"></div>
         <div class="leaf" style="--i: 7;"></div>
         <div class="leaf" style="--i: 8;"></div>
-        <!-- Agrega más hojas si lo deseas -->
     </div>
 
     <script src="kaka.js"></script>
