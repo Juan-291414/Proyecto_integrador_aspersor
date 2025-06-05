@@ -450,8 +450,7 @@ function mostrarSeccion(idSeccion) {
 
 document.addEventListener('DOMContentLoaded', () => {
     Usuario.crearUsuario("administrador", "Jsnavaro", "kaka");
-    Usuario.crearUsuario("campesino", "campesino1", "campesino123");
-    Usuario.crearUsuario("campesino", "juanito", "pass123");
+    Usuario.crearUsuario("campesino", "Daniel", "1234");
 
     Usuario.iniciarSesionDesdeFormulario();
     Usuario.registrarCampesinoDesdeFormulario();
