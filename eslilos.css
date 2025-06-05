@@ -5,7 +5,7 @@ body {
     padding: 20px;
     background-color: #f4f4f4;
     color: #2c3e50;
-    background-image: url('https://www.transparenttextures.com/patterns/wood-pattern.png');
+    background-image: url('https://www.transparenttextures.com/patterns/wood-pattern.png'); /* Fondo sutil de madera */
     background-size: cover;
     background-attachment: fixed;
 }
@@ -15,7 +15,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 80vh;
+    height: 80vh; /* La altura ocupa la mayor parte de la pantalla */
     flex-direction: column;
     text-align: center;
 }
@@ -124,7 +124,7 @@ hr {
     top: -10%;
     width: 40px;
     height: 40px;
-    background-image: url('https://upload.wikimedia.org/wikipedia/commons/5/57/Leaf_icon_02.svg'); /* Hoja visible desde internet */
+    background-image: url('hoja.png'); /* Reemplaza con la ruta de tu PNG */
     background-size: cover;
     animation: float 10s linear infinite, spin 6s linear infinite;
     animation-delay: calc(0.5s * var(--i));
@@ -147,4 +147,14 @@ hr {
     100% {
         transform: rotate(360deg);
     }
+}
+
+/* Estilo de la bienvenida */
+.welcome-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    flex-direction: column;
+    text-align: center;
 }
