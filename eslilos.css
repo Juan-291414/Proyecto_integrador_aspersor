@@ -3,9 +3,12 @@ body {
     font-family: 'Georgia', serif;
     margin: 0;
     padding: 20px;
-    background-color: #f0f0f0;
+    background-color: #f4f4f4;
     color: #2c3e50;
     line-height: 1.6;
+    background-image: url('https://www.transparenttextures.com/patterns/wood-pattern.png'); /* Fondo sutil de madera */
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 /* Encabezados */
@@ -145,3 +148,69 @@ hr {
     background: linear-gradient(90deg, #3498db, #f39c12);
     margin: 30px 0;
 }
+
+/* Animación de hojas flotando */
+@keyframes floatLeaves {
+    0% {
+        transform: translateY(-10px) rotate(0deg);
+        opacity: 0.5;
+    }
+    50% {
+        transform: translateY(20px) rotate(180deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-10px) rotate(360deg);
+        opacity: 0.5;
+    }
+}
+
+.leaf {
+    position: absolute;
+    top: -10%;
+    left: 50%;
+    width: 30px;
+    height: 30px;
+    background-color: #2ecc71; /* Verde */
+    clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+    animation: floatLeaves 6s infinite linear;
+    animation-delay: calc(-1s * var(--i));
+    z-index: -1;
+}
+
+.leaf:nth-child(odd) {
+    background-color: #f39c12; /* Naranja */
+}
+
+.leaf:nth-child(even) {
+    background-color: #3498db; /* Azul */
+}
+
+/* Fondo animado */
+@keyframes leafMovement {
+    0% {
+        transform: translateY(0px);
+    }
+    100% {
+        transform: translateY(100vh);
+    }
+}
+
+.leaf-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.leaf-container .leaf {
+    position: absolute;
+    left: calc(100% * random);
+    animation: leafMovement 10s infinite;
+    opacity: 0.8;
+    transform: rotate(45deg);
+}
+
