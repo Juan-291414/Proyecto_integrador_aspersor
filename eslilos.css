@@ -1,3 +1,4 @@
+/* Estilo general */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -9,10 +10,22 @@ body {
     background-attachment: fixed;
 }
 
+/* Contenedor para centrar el contenido de bienvenida */
+.welcome-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    flex-direction: column;
+    text-align: center;
+}
+
+/* Títulos */
 h1, h2, h3 {
     color: #333;
 }
 
+/* Contenedores principales */
 .main-container {
     display: none;
     padding: 20px;
@@ -22,10 +35,13 @@ h1, h2, h3 {
     margin-top: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-.main-container.visible { display: block; }
+.main-container.visible {
+    display: block;
+}
 .hidden { display: none; }
 .visible { display: block; }
 
+/* Formularios */
 form {
     margin-bottom: 20px;
     padding: 15px;
@@ -34,6 +50,7 @@ form {
     border-radius: 5px;
 }
 
+/* Estilos de los inputs */
 label {
     display: block;
     margin-bottom: 5px;
@@ -47,6 +64,7 @@ input[type="text"], input[type="password"], input[type="number"], select {
     border-radius: 4px;
 }
 
+/* Botones */
 button {
     padding: 10px 20px;
     background-color: #28a745;
@@ -61,6 +79,7 @@ button:hover {
     background-color: #218838;
 }
 
+/* Mensajes */
 .message {
     margin-top: 15px;
     padding: 10px;
@@ -71,6 +90,7 @@ button:hover {
 .message[style*="red"] { background-color: #f8d7da; color: #721c24; border-color: #f5c6cb; }
 .message[style*="orange"] { background-color: #fff3cd; color: #856404; border-color: #ffeeba; }
 
+/* Listas */
 ul {
     list-style: none;
     padding: 0;
@@ -88,7 +108,7 @@ hr {
     margin: 20px 0;
 }
 
-/* Animación de hojas */
+/* Hojas flotantes */
 .leaf-container {
     position: fixed;
     top: 0;
@@ -96,7 +116,6 @@ hr {
     width: 100%;
     height: 100%;
     pointer-events: none;
-    overflow: hidden;
     z-index: -1;
 }
 
@@ -105,36 +124,27 @@ hr {
     top: -10%;
     width: 40px;
     height: 40px;
-    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Leaf_icon.svg/48px-Leaf_icon.svg.png');
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/5/57/Leaf_icon_02.svg'); /* Hoja visible desde internet */
     background-size: cover;
-    opacity: 0.8;
-    animation: fall 10s linear infinite, sway 3s ease-in-out infinite;
-    animation-delay: calc(1s * var(--i));
+    animation: float 10s linear infinite, spin 6s linear infinite;
+    animation-delay: calc(0.5s * var(--i));
 }
 
-@keyframes fall {
+/* Animación de las hojas */
+@keyframes float {
     0% {
-        transform: translateY(0);
+        transform: translateY(0) rotate(0deg);
     }
     100% {
-        transform: translateY(110vh);
+        transform: translateY(100vh) rotate(360deg);
     }
 }
 
-@keyframes sway {
-    0%, 100% {
-        transform: translateX(0px) rotate(0deg);
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
     }
-    50% {
-        transform: translateX(30px) rotate(15deg);
+    100% {
+        transform: rotate(360deg);
     }
 }
-
-.leaf:nth-child(1) { left: 5%; animation-duration: 9s; }
-.leaf:nth-child(2) { left: 15%; animation-duration: 11s; }
-.leaf:nth-child(3) { left: 25%; animation-duration: 10s; }
-.leaf:nth-child(4) { left: 35%; animation-duration: 12s; }
-.leaf:nth-child(5) { left: 50%; animation-duration: 9s; }
-.leaf:nth-child(6) { left: 65%; animation-duration: 10s; }
-.leaf:nth-child(7) { left: 75%; animation-duration: 11s; }
-.leaf:nth-child(8) { left: 85%; animation-duration: 13s; }
