@@ -3,114 +3,200 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestión de Finca</title>
-    <link rel="stylesheet" href="estilos.css"> 
+    <title>Sistema de Gestión de Terrenos Agrícolas</title>
+    <link rel="stylesheet" href=" estilo.css "> 
 </head>
 <body>
-
-    <h1>Sistema de Gestión Agrícola</h1>
-
-    <div id="welcomeSection" class="main-container visible">
-        <h2>Bienvenido</h2>
-        <p>Por favor, inicie sesión o regístrese.</p>
-        <button id="showLoginBtn">Iniciar Sesión</button>
-        <button id="showRegisterBtn">Registrar Campesino</button>
+    <div class="container">
+        <header>
+            <h1>🌱 DISEÑO DE UN SISTEMA DE MICROASPERSIÓN AUTOMÁTICO INSPIRADO EN EL TORNILLO AÉREO DE LEONARDO DA VINCI </h1>
+            <p>Control de terrenos, riego y usuarios</p>
+        </header>
+        
+        <!-- Sección de Bienvenida -->
+        <section id="welcomeSection" class="main-container visible">
+            <h2 class="section-title">Bienvenido al Sistema</h2>
+            <div class="form-container">
+                <p style="text-align: center; margin-bottom: 20px; font-size: 1.1rem;">
+                    Gestione sus terrenos agrícolas, usuarios y sistemas de riego de manera eficiente
+                </p>
+                <div class="action-buttons">
+                    <button id="showLoginBtn" class="btn">Iniciar Sesión</button>
+                    <button id="showRegisterBtn" class="btn btn-secondary">Registrar Campesino</button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Sección de Login -->
+        <section id="loginSection" class="main-container hidden">
+            <h2 class="section-title">Iniciar Sesión</h2>
+            <div class="form-container">
+                <form id="formLogin">
+                    <div class="form-group">
+                        <label for="loginNombre">Nombre de usuario:</label>
+                        <input type="text" id="loginNombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginContrasena">Contraseña:</label>
+                        <input type="password" id="loginContrasena" required>
+                    </div>
+                    <button type="submit" class="btn">Acceder</button>
+                    <div id="mensajeLogin" class="alert" style="margin-top: 15px;"></div>
+                </form>
+                <div class="nav-buttons">
+                    <button id="backToWelcomeFromLogin" class="btn btn-secondary">Volver</button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Sección de Registro -->
+        <section id="registerSection" class="main-container hidden">
+            <h2 class="section-title">Registrar Nuevo Campesino</h2>
+            <div class="form-container">
+                <form id="formCrearUsuario">
+                    <div class="form-group">
+                        <label for="nombreUsuario">Nombre de usuario:</label>
+                        <input type="text" id="nombreUsuario" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contrasenaUsuario">Contraseña:</label>
+                        <input type="password" id="contrasenaUsuario" required>
+                    </div>
+                    <button type="submit" class="btn btn-success">Registrar Campesino</button>
+                    <div id="mensajeRegistro" class="alert" style="margin-top: 15px;"></div>
+                </form>
+                <div class="nav-buttons">
+                    <button id="backToWelcomeFromRegister" class="btn btn-secondary">Volver</button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Sección de Administrador -->
+        <section id="adminSection" class="main-container hidden">
+            <div class="user-info">
+                <h2>Panel de Administrador</h2>
+                <p>Usuario: <span id="adminUsername"></span> | Rol: <span id="adminUserRole"></span></p>
+            </div>
+            
+            <div class="grid-container">
+                <div class="card">
+                    <h3>Crear Nuevo Usuario</h3>
+                    <form id="formAdminCrearUsuario">
+                        <div class="form-group">
+                            <label for="adminNombreUsuario">Nombre de usuario:</label>
+                            <input type="text" id="adminNombreUsuario" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="adminContrasenaUsuario">Contraseña:</label>
+                            <input type="password" id="adminContrasenaUsuario" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="adminRolUsuario">Rol:</label>
+                            <select id="adminRolUsuario" required>
+                                <option value="administrador">Administrador</option>
+                                <option value="campesino">Campesino</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn">Crear Usuario</button>
+                        <div id="mensajeAdminCrearUsuario" class="alert" style="margin-top: 15px;"></div>
+                    </form>
+                </div>
+                
+                <div class="card">
+                    <h3>Crear Nuevo Terreno</h3>
+                    <form id="formAdminCrearTerreno">
+                        <div class="form-group">
+                            <label for="adminAnchoTerreno">Ancho (m):</label>
+                            <input type="number" id="adminAnchoTerreno" step="0.01" min="0.01" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="adminLargoTerreno">Largo (m):</label>
+                            <input type="number" id="adminLargoTerreno" step="0.01" min="0.01" required>
+                        </div>
+                        <button type="submit" class="btn">Crear Terreno</button>
+                        <div id="mensajeAdminCrearTerreno" class="alert" style="margin-top: 15px;"></div>
+                    </form>
+                </div>
+                
+                <div class="card">
+                    <h3>Asignar Terreno</h3>
+                    <form id="formAdminAsignarTerreno">
+                        <div class="form-group">
+                            <label for="selectCampesinoAsignar">Campesino:</label>
+                            <select id="selectCampesinoAsignar" required>
+                                <option value="">Seleccione Campesino</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="selectTerrenoAsignar">Terreno:</label>
+                            <select id="selectTerrenoAsignar" required>
+                                <option value="">Seleccione Terreno</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn">Asignar Terreno</button>
+                        <div id="mensajeAsignarTerreno" class="alert" style="margin-top: 15px;"></div>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="grid-container" style="margin-top: 30px;">
+                <div class="card">
+                    <h3>Usuarios Registrados</h3>
+                    <div id="listaUsuarios"></div>
+                </div>
+                
+                <div class="card">
+                    <h3>Terrenos Disponibles</h3>
+                    <div id="listaTerrenos"></div>
+                </div>
+            </div>
+            
+            <div class="action-buttons" style="margin-top: 30px;">
+                <button id="logoutAdminBtn" class="btn btn-danger">Cerrar Sesión</button>
+            </div>
+        </section>
+        
+        <!-- Sección de Campesino -->
+        <section id="campesinoSection" class="main-container hidden">
+            <div class="user-info">
+                <h2>Panel de Campesino</h2>
+                <p>Usuario: <span id="campesinoUsername"></span> | Rol: <span id="campesinoUserRole"></span></p>
+            </div>
+            
+            <div class="grid-container">
+                <div class="card">
+                    <h3>Información del Terreno</h3>
+                    <p><strong>ID y Área:</strong> <span id="infoTerrenoCampesino">Ninguno asignado</span></p>
+                    <p><strong>Estado del Aspersor:</strong> <span id="estadoAspersorCampesino">APAGADO</span></p>
+                    <p><strong>Humedad Actual:</strong> <span id="humedadCampesino">0%</span></p>
+                </div>
+                
+                <div class="card">
+                    <h3>Control de Aspersor</h3>
+                    <div class="action-buttons">
+                        <button id="btnEncenderAspersor" class="btn btn-success">Encender Aspersor</button>
+                        <button id="btnApagarAspersor" class="btn btn-danger">Apagar Aspersor</button>
+                    </div>
+                    
+                    <div class="form-group" style="margin-top: 20px;">
+                        <label for="nuevaHumedad">Establecer Humedad (%):</label>
+                        <input type="number" id="nuevaHumedad" min="0" max="100" value="0">
+                        <button id="btnSetHumedad" class="btn" style="margin-top: 10px;">Actualizar Humedad</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="action-buttons" style="margin-top: 30px;">
+                <button id="logoutCampesinoBtn" class="btn btn-danger">Cerrar Sesión</button>
+            </div>
+        </section>
+        
+        <div class="footer">
+            <p>Sistema de Gestión Agrícola &copy; 2023 | Todos los derechos reservados</p>
+        </div>
     </div>
-
-    <div id="loginSection" class="main-container">
-        <h2>Iniciar Sesión</h2>
-        <form id="formLogin">
-            <label for="loginNombre">Nombre de Usuario:</label>
-            <input type="text" id="loginNombre" required>
-            <label for="loginContrasena">Contraseña:</label>
-            <input type="password" id="loginContrasena" required>
-            <button type="submit">Iniciar Sesión</button>
-            <p id="mensajeLogin" class="message"></p>
-        </form>
-        <button id="backToWelcomeFromLogin" style="background-color: #6c757d;">Volver</button>
-    </div>
-
-    <div id="registerSection" class="main-container">
-        <h2>Registrar Nuevo Campesino</h2>
-        <form id="formCrearUsuario">
-            <label for="nombreUsuario">Nombre de Usuario:</label>
-            <input type="text" id="nombreUsuario" required>
-            <label for="contrasenaUsuario">Contraseña:</label>
-            <input type="password" id="contrasenaUsuario" required>
-            <button type="submit">Registrar</button>
-            <p id="mensajeRegistro" class="message"></p>
-        </form>
-        <button id="backToWelcomeFromRegister" style="background-color: #6c757d;">Volver</button>
-    </div>
-
-    <div id="adminSection" class="main-container">
-        <h2>Panel de Administración</h2>
-        <p>Bienvenido, <span id="adminUsername"></span> (<span id="adminUserRole"></span>)</p>
-
-        <hr>
-
-        <h3>Crear Nuevo Usuario</h3>
-        <form id="formAdminCrearUsuario">
-            <label for="adminNombreUsuario">Nombre de Usuario:</label>
-            <input type="text" id="adminNombreUsuario" required>
-            <label for="adminContrasenaUsuario">Contraseña:</label>
-            <input type="password" id="adminContrasenaUsuario" required>
-            <label for="adminRolUsuario">Rol:</label>
-            <select id="adminRolUsuario" required>
-                <option value="campesino">Campesino</option>
-                <option value="administrador">Administrador</option>
-            </select>
-            <button type="submit">Crear Usuario</button>
-            <p id="mensajeAdminCrearUsuario" class="message"></p>
-        </form>
-        <div id="listaUsuarios"></div>
-
-        <hr>
-
-        <h3>Crear Nuevo Terreno</h3>
-        <form id="formAdminCrearTerreno">
-            <label for="adminAnchoTerreno">Ancho (metros):</label>
-            <input type="number" id="adminAnchoTerreno" step="0.01" min="0.01" required>
-            <label for="adminLargoTerreno">Largo (metros):</label>
-            <input type="number" id="adminLargoTerreno" step="0.01" min="0.01" required>
-            <button type="submit">Crear Terreno</button>
-            <p id="mensajeAdminCrearTerreno" class="message"></p>
-        </form>
-        <div id="listaTerrenos"></div>
-
-        <hr>
-
-        <h3>Asignar Terreno a Campesino</h3>
-        <form id="formAdminAsignarTerreno">
-            <label for="selectCampesinoAsignar">Seleccionar Campesino:</label>
-            <select id="selectCampesinoAsignar" required>
-                <option value="">Cargando campesinos...</option>
-            </select>
-            <label for="selectTerrenoAsignar">Seleccionar Terreno:</label>
-            <select id="selectTerrenoAsignar" required>
-                <option value="">Cargando terrenos...</option>
-            </select>
-            <button type="submit">Asignar Terreno</button>
-            <p id="mensajeAsignarTerreno" class="message"></p>
-        </form>
-
-        <hr>
-        <button id="logoutAdminBtn" style="background-color: #dc3545;">Cerrar Sesión</button>
-    </div>
-
-    <div id="campesinoSection" class="main-container">
-        <h2>Panel del Campesino</h2>
-        <p>Bienvenido, <span id="campesinoUsername"></span> (<span id="campesinoUserRole"></span>)</p>
-        <h3>Información de Terreno Asignado:</h3>
-        <p id="infoTerrenoCampesino">Ninguno asignado.</p>
-        <h3>Control de Aspersor:</h3>
-        <p>Estado del Aspersor: <span id="estadoAspersorCampesino">APAGADO</span></p>
-        <button id="btnEncenderAspersor">Encender Aspersor</button>
-        <button id="btnApagarAspersor">Apagar Aspersor</button>
-        <hr>
-        <button id="logoutCampesinoBtn" style="background-color: #dc3545;">Cerrar Sesión</button>
-    </div>
-
-    <script src="kaka.js"></script>
+    
+    <div id="temporaryAlert" class="temporary-alert hidden"></div>
+    <script src=" kaka.js "></script>
 </body>
 </html>
