@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Simulación de Tornillo Aéreo - Aspersor</title>
+  <link rel="stylesheet" href="estilo.css" />
+  <link rel="shortcut icon" href="https://e7.pngegg.com/pngimages/283/828/png-clipart-dragon-pixel-logo-terriermon-renamon-impmon-digimon-logo-digimon-angle-text-thumbnail.png" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Simulación del Tornillo Aéreo como Aspersor</h1>
+      <nav class="nav-links">
+        <a href="../HTML/0_inicio.html">Inicio</a>
+        <a href="../HTML/1_expicasion.html">Explicación</a>
+        <a href="../HTML/4_documento.html">Documento</a>
+      </nav>
+    </header>
+
+    <main>
+      <form id="formSimulador">
+        <label for="area">Área del terreno (m²):</label>
+        <input type="number" id="area" min="0" step="0.1" required>
+
+        <label for="altura">Altura del depósito del agua (m):</label>
+        <input type="number" id="altura" min="0" step="0.01" required>
+
+        <label for="orificios">Número de orificios:</label>
+        <input type="number" id="orificios" min="1" required>
+
+        <label for="radio">Radio de orificio (m):</label>
+        <input type="number" id="radio" min="0" step="0.0001" required>
+
+        <label for="tiempo">Tiempo (s):</label>
+        <input type="number" id="tiempo" min="1" required>
+
+        <button type="submit">Calcular</button>
+      </form>
+
+      <div class="output" id="resultados"></div>
+
+      <!-- Gráfica solo para tornillo aéreo -->
+      <canvas id="graficaTornillo" width="600" height="400"></canvas>
+    </main>
+
+    <footer>
+      <p>Proyecto Integrador – Programa de Ingeniería de Sistemas y Computación © 2025</p>
+    </footer>
+  </div>
+
+  <script src="simulador.js"></script>
+</body>
+</html>
