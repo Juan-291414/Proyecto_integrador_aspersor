@@ -1,201 +1,94 @@
-/* Estilo general */
 body {
-    font-family: 'Georgia', serif;
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 20px;
     background-color: #f4f4f4;
     color: #2c3e50;
-    line-height: 1.6;
-    background-image: url('https://www.transparenttextures.com/patterns/wood-pattern.png'); /* Fondo sutil de madera */
+    background-image: url('https://www.transparenttextures.com/patterns/wood-pattern.png');
     background-size: cover;
     background-attachment: fixed;
 }
 
-/* Encabezados */
 h1, h2, h3 {
-    font-family: 'Palatino', serif;
-    color: #1c2833;
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+    color: #333;
 }
 
-/* Contenedor principal */
 .main-container {
     display: none;
-    padding: 25px;
-    background: linear-gradient(135deg, #f8c471, #e67e22);
-    border: 1px solid #d35400;
-    border-radius: 12px;
-    margin-top: 30px;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-}
-
-/* Visibilidad del contenedor */
-.main-container.visible {
-    display: block;
-}
-
-/* Formularios y entradas */
-form {
-    margin-bottom: 30px;
     padding: 20px;
-    background-color: #ecf0f1;
-    border: 1px solid #bdc3c7;
+    border: 1px solid #ddd;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    background-color: #fff;
+    margin-top: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.main-container.visible { display: block; }
+.hidden { display: none; }
+.visible { display: block; }
+
+form {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #eee;
+    background-color: #f9f9f9;
+    border-radius: 5px;
 }
 
 label {
     display: block;
-    font-weight: bold;
     margin-bottom: 5px;
-    color: #34495e;
-    font-size: 1.1rem;
+    font-weight: bold;
 }
-
 input[type="text"], input[type="password"], input[type="number"], select {
     width: calc(100% - 20px);
-    padding: 12px;
-    margin-bottom: 20px;
-    border: 2px solid #3498db;
-    border-radius: 6px;
-    background-color: #f4f6f7;
-    font-size: 1rem;
-    transition: border 0.3s ease;
-}
-
-input[type="text"]:focus, input[type="password"]:focus, input[type="number"]:focus, select:focus {
-    border-color: #2980b9;
-    background-color: #ffffff;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
 button {
-    padding: 12px 25px;
-    background-color: #27ae60;
-    color: #fff;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
     border: none;
-    border-radius: 8px;
+    border-radius: 5px;
     cursor: pointer;
-    font-size: 1.2rem;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
+    font-size: 16px;
+    margin-right: 10px;
 }
-
 button:hover {
-    background-color: #2ecc71;
-    transform: translateY(-2px);
+    background-color: #218838;
 }
 
-button:active {
-    background-color: #16a085;
-    transform: translateY(2px);
-}
-
-/* Mensajes de error, éxito, advertencia */
 .message {
-    margin-top: 20px;
-    padding: 15px;
-    border-radius: 6px;
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 4px;
     font-weight: bold;
-    text-align: center;
-    font-size: 1.1rem;
 }
+.message[style*="green"] { background-color: #d4edda; color: #155724; border-color: #c3e6cb; }
+.message[style*="red"] { background-color: #f8d7da; color: #721c24; border-color: #f5c6cb; }
+.message[style*="orange"] { background-color: #fff3cd; color: #856404; border-color: #ffeeba; }
 
-.message[style*="green"] {
-    background-color: #e9f7ef;
-    color: #27ae60;
-    border-color: #82e0aa;
-}
-
-.message[style*="red"] {
-    background-color: #fbe2e2;
-    color: #c0392b;
-    border-color: #f5b7b1;
-}
-
-.message[style*="orange"] {
-    background-color: #fff3e6;
-    color: #f39c12;
-    border-color: #f7c45c;
-}
-
-/* Lista */
 ul {
-    list-style-type: none;
+    list-style: none;
     padding: 0;
-    margin-top: 20px;
 }
-
 li {
-    background-color: #f7f9f9;
-    padding: 12px 18px;
-    margin-bottom: 10px;
-    border-radius: 8px;
-    border-left: 5px solid #3498db;
-    transition: all 0.3s ease;
+    background-color: #e9e9e9;
+    padding: 8px 12px;
+    margin-bottom: 5px;
+    border-radius: 4px;
 }
-
-li:hover {
-    background-color: #ecf0f1;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
-
-/* Separador horizontal */
 hr {
     border: 0;
-    height: 2px;
-    background: linear-gradient(90deg, #3498db, #f39c12);
-    margin: 30px 0;
+    height: 1px;
+    background: #eee;
+    margin: 20px 0;
 }
 
-/* Animación de hojas flotando */
-@keyframes floatLeaves {
-    0% {
-        transform: translateY(-10px) rotate(0deg);
-        opacity: 0.5;
-    }
-    50% {
-        transform: translateY(20px) rotate(180deg);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(-10px) rotate(360deg);
-        opacity: 0.5;
-    }
-}
-
-.leaf {
-    position: absolute;
-    top: -10%;
-    left: 50%;
-    width: 30px;
-    height: 30px;
-    background-color: #2ecc71; /* Verde */
-    clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
-    animation: floatLeaves 6s infinite linear;
-    animation-delay: calc(-1s * var(--i));
-    z-index: -1;
-}
-
-.leaf:nth-child(odd) {
-    background-color: #f39c12; /* Naranja */
-}
-
-.leaf:nth-child(even) {
-    background-color: #3498db; /* Azul */
-}
-
-/* Fondo animado */
-@keyframes leafMovement {
-    0% {
-        transform: translateY(0px);
-    }
-    100% {
-        transform: translateY(100vh);
-    }
-}
-
+/* Animación de hojas */
 .leaf-container {
     position: fixed;
     top: 0;
@@ -203,14 +96,45 @@ hr {
     width: 100%;
     height: 100%;
     pointer-events: none;
+    overflow: hidden;
     z-index: -1;
 }
 
-.leaf-container .leaf {
+.leaf {
     position: absolute;
-    left: calc(100% * random);
-    animation: leafMovement 10s infinite;
+    top: -10%;
+    width: 40px;
+    height: 40px;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Leaf_icon.svg/48px-Leaf_icon.svg.png');
+    background-size: cover;
     opacity: 0.8;
-    transform: rotate(45deg);
+    animation: fall 10s linear infinite, sway 3s ease-in-out infinite;
+    animation-delay: calc(1s * var(--i));
 }
 
+@keyframes fall {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(110vh);
+    }
+}
+
+@keyframes sway {
+    0%, 100% {
+        transform: translateX(0px) rotate(0deg);
+    }
+    50% {
+        transform: translateX(30px) rotate(15deg);
+    }
+}
+
+.leaf:nth-child(1) { left: 5%; animation-duration: 9s; }
+.leaf:nth-child(2) { left: 15%; animation-duration: 11s; }
+.leaf:nth-child(3) { left: 25%; animation-duration: 10s; }
+.leaf:nth-child(4) { left: 35%; animation-duration: 12s; }
+.leaf:nth-child(5) { left: 50%; animation-duration: 9s; }
+.leaf:nth-child(6) { left: 65%; animation-duration: 10s; }
+.leaf:nth-child(7) { left: 75%; animation-duration: 11s; }
+.leaf:nth-child(8) { left: 85%; animation-duration: 13s; }
