@@ -3,8 +3,8 @@ class MicroAspersion {
   constructor(area, altura, orificios, radio, tiempo) {
     this.area = area;
     this.altura = altura;
-    this.orificios = orificios;
-    this.radio = radio;
+    this.orificios = 12;
+    this.radio = 0,8; // milimetros 
     this.tiempo = tiempo;
     this.g = 9.81;       // Aceleración gravitatoria (m/s²)
     this.rho = 1000;     // Densidad del agua (kg/m³)
@@ -67,66 +67,7 @@ class MicroAspersion {
   }
 }
 
-// Función que genera la gráfica del tornillo aéreo con Chart.js
-function generarGraficaTornillo(sistema) {
-  const ctx = document.getElementById('graficaTornillo').getContext('2d');
 
-  // Si ya existe un gráfico anterior, destruirlo para evitar solapamientos
-  if (window.grafico) {
-    window.grafico.destroy();
-  }
-
-  // Crear nueva gráfica
-  window.grafico = new Chart(ctx, {
-    type: 'radar',
-    data: {
-      labels: ['Caudal Total (L/s)', 'Agua Total (L)', 'Distribución (L/m²)'],
-      datasets: [{
-        label: 'Tornillo Aéreo',
-        data: [
-          sistema.calcularCaudalTotal() * 1000,  // L/s
-          sistema.calcularAguaTotal(),           // Litros
-          sistema.calcularDistribucionPorM2()    // L/m²
-        ],
-        backgroundColor: 'rgba(54, 162, 235, 0.4)',
-        borderColor: 'rgba(54, 162, 235, 1)',
-        pointBackgroundColor: 'rgba(54, 162, 235, 1)',
-        pointBorderColor: '#fff',
-        pointHoverBackgroundColor: '#fff',
-        pointHoverBorderColor: 'rgba(54, 162, 235, 1)'
-      }]
-    },
-    options: {
-      responsive: true,
-      plugins: {
-        title: {
-          display: true,
-          text: 'Resultados del Tornillo Aéreo'
-        }
-      },
-
-      scales: {
-
-        r: {
-          beginAtZero: true,
-          ticks: {
-            display: false // Oculta los números dentro del gráfico
-          },
-          pointLabels: {
-            font: {
-              size: 14
-            }
-          },
-          grid: {
-            color: 'rgba(0, 0, 0, 0.1)'
-          }
-        }
-        
-      }      
-
-    }
-  });
-}
 
 // Evento que maneja el envío del formulario
 document.getElementById("formSimulador").addEventListener("submit", function (e) {
