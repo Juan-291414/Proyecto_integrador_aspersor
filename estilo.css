@@ -1,14 +1,323 @@
-        body { font-family: sans-serif; margin: 20px; }
-        .main-container { border: 1px solid #ccc; padding: 20px; margin-bottom: 20px; }
-        .hidden { display: none; }
-        .visible { display: block; }
-        #navbar { background-color: #f0f0f0; padding: 10px; margin-bottom: 20px; }
-        #navbar ul { list-style: none; padding: 0; margin: 0; display: flex; gap: 15px; }
-        #navbar a { text-decoration: none; color: blue; }
-        h1, h2, h3, h4 { color: #333; }
-        button { padding: 8px 15px; cursor: pointer; }
-        input[type="text"], input[type="password"], input[type="number"], select {
-            padding: 8px; margin: 5px 0; width: 200px;
-        }
-        .message { margin-top: 10px; font-weight: bold; }
-        #resultadosSimulacion { border: 1px dashed #007bff; padding: 15px; margin-top: 20px; background-color: #e6f7ff; }
+/* Estilos generales */
+:root {
+    --verde-primario: #4a8f29;
+    --verde-secundario: #6bbd46;
+    --verde-claro: #d4edda;
+    --marron-terreno: #8b5a2b;
+    --marron-claro: #d2b48c;
+    --azul-agua: #a4d4f2;
+    --blanco: #ffffff;
+    --gris: #f8f9fa;
+    --gris-oscuro: #343a40;
+    --sombra: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    background-image: url('https://www.transparenttextures.com/patterns/leaves.png');
+    color: #333;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Barra de navegación */
+#navbar {
+    background-color: var(--verde-primario);
+    padding: 1rem 2rem;
+    box-shadow: var(--sombra);
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    transition: transform 0.3s ease;
+}
+
+#navbar.hidden {
+    transform: translateY(-100%);
+}
+
+#navbar ul {
+    display: flex;
+    justify-content: flex-end;
+    list-style: none;
+}
+
+#navbar li {
+    margin-left: 1.5rem;
+}
+
+#navbar a {
+    color: var(--blanco);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+#navbar a:hover {
+    background-color: var(--verde-secundario);
+}
+
+/* Contenedores principales */
+.main-container {
+    max-width: 1000px;
+    margin: 6rem auto 2rem;
+    padding: 2rem;
+    background-color: var(--blanco);
+    border-radius: 10px;
+    box-shadow: var(--sombra);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.main-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 10px;
+    background: linear-gradient(90deg, var(--verde-primario), var(--verde-secundario), var(--azul-agua));
+}
+
+.main-container.visible {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.main-container.hidden {
+    display: none;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+/* Sección de bienvenida */
+#welcomeSection {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    background-image: url('https://www.transparenttextures.com/patterns/leaves-pattern.png');
+}
+
+#welcomeSection h1 {
+    color: var(--verde-primario);
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+#welcomeSection button {
+    margin: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    font-size: 1.1rem;
+}
+
+/* Formularios */
+form {
+    margin: 1.5rem 0;
+    padding: 1.5rem;
+    background-color: var(--gris);
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--verde-primario);
+}
+
+input, select {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--verde-secundario);
+    box-shadow: 0 0 0 2px rgba(107, 189, 70, 0.2);
+}
+
+button {
+    background-color: var(--verde-primario);
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+button:hover {
+    background-color: var(--verde-secundario);
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* Secciones específicas */
+hr {
+    margin: 2rem 0;
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(74, 143, 41, 0.75), rgba(0, 0, 0, 0));
+}
+
+.message {
+    padding: 0.8rem;
+    margin: 1rem 0;
+    border-radius: 4px;
+    text-align: center;
+}
+
+/* Panel de administrador */
+#adminSection h3 {
+    color: var(--verde-primario);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--verde-claro);
+}
+
+#adminSection h4 {
+    color: var(--marron-terreno);
+    margin: 1rem 0;
+}
+
+/* Panel de campesino */
+#campesinoSection {
+    background-color: rgba(255, 255, 255, 0.95);
+}
+
+#infoTerrenoCampesino {
+    padding: 1rem;
+    background-color: var(--verde-claro);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+#estadoAspersorCampesino {
+    color: var(--verde-primario);
+    font-size: 1.2rem;
+}
+
+#btnEncenderAspersor {
+    background-color: #28a745;
+    margin-right: 1rem;
+}
+
+#btnApagarAspersor {
+    background-color: #dc3545;
+}
+
+/* Simulación */
+#simulacionContainer {
+    padding: 1.5rem;
+    background-color: var(--azul-agua);
+    border-radius: 8px;
+    margin: 1.5rem 0;
+}
+
+#simulacionContainer h3 {
+    color: #0056b3;
+    margin-bottom: 1rem;
+}
+
+#resultadosSimulacion {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background-color: var(--blanco);
+    border-radius: 8px;
+    border-left: 5px solid var(--verde-primario);
+}
+
+/* Listas de usuarios y terrenos */
+#listaUsuarios, #listaTerrenos {
+    margin: 1.5rem 0;
+}
+
+#listaUsuarios div, #listaTerrenos div {
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+    background-color: var(--gris);
+    border-radius: 4px;
+    border-left: 4px solid var(--verde-primario);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Efectos especiales */
+@keyframes ripple {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+.ripple {
+    position: relative;
+    overflow: hidden;
+}
+
+.ripple:after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    background-image: radial-gradient(circle, #fff 10%, transparent 10.01%);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    transform: scale(10, 10);
+    opacity: 0;
+    transition: transform .5s, opacity 1s;
+}
+
+.ripple:active:after {
+    transform: scale(0, 0);
+    opacity: .3;
+    transition: 0s;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .main-container {
+        margin: 5rem 1rem 1rem;
+        padding: 1.5rem;
+    }
+    
+    #navbar ul {
+        justify-content: center;
+    }
+    
+    #navbar li {
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+    }
+    
+    #welcomeSection h1 {
+        font-size: 2rem;
+    }
+}
