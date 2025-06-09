@@ -1,0 +1,66 @@
+/* General Body Styles */
+body {
+    font-family: sans-serif; /* A common, readable font */
+    margin: 0; /* Remove default body margin */
+    line-height: 1.6;
+    background-color: #f4f4f4; /* Light gray background */
+    color: #333; /* Dark gray text color */
+}
+
+/* Header Styles */
+header {
+    background-color: #333; /* Dark background for the header */
+    color: #fff; /* White text for the header */
+    padding: 1rem 0; /* Vertical padding */
+    text-align: center; /* Center align header content */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Subtle shadow for depth */
+}
+
+header h1 {
+    margin-bottom: 1rem; /* Space below the main title */
+}
+
+/* Navigation Bar Styles */
+nav ul {
+    list-style: none; /* Remove bullet points from list items */
+    padding: 0;
+    margin: 0;
+    display: flex; /* Arrange list items in a row */
+    justify-content: center; /* Center the navigation links */
+}
+
+nav ul li {
+    margin: 0 15px; /* Horizontal space between nav items */
+}
+
+nav ul li a {
+    color: #fff; /* White link color */
+    text-decoration: none; /* Remove underline from links */
+    font-weight: bold;
+    transition: color 0.3s ease-in-out; /* Smooth color transition on hover */
+}
+
+nav ul li a:hover {
+    color: #ffd700; /* Gold color on hover */
+}
+
+/* Iframe Container Styles */
+iframe {
+    display: block; /* Ensures the iframe takes up its own line */
+    margin: 2rem auto; /* Center the iframe horizontally with vertical spacing */
+    max-width: 90%; /* Ensure iframe is responsive on smaller screens */
+    border: 1px solid #ddd; /* Light border around the iframe */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Slightly more prominent shadow */
+}
+
+/* Footer Styles */
+footer {
+    text-align: center;
+    padding: 1rem 0;
+    background-color: #333; /* Dark background for the footer */
+    color: #fff; /* White text for the footer */
+    position: relative; /* Positioning for potential future elements */
+    bottom: 0;
+    width: 100%;
+    margin-top: 2rem; /* Space above the footer */
+}
