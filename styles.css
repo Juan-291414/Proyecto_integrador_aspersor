@@ -1,66 +1,115 @@
-/* General Body Styles */
-body {
-    font-family: sans-serif; /* A common, readable font */
-    margin: 0; /* Remove default body margin */
-    line-height: 1.6;
-    background-color: #f4f4f4; /* Light gray background */
-    color: #333; /* Dark gray text color */
+/* Definición de variables CSS */
+:root {
+    --verde-primario: #4a8f29;
+    --verde-secundario: #6bbd46;
+    --verde-claro: #d4edda;
+    --texto-oscuro: #333;
+    --texto-claro: #fff;
+    --fondo-gris-claro: #f4f4f4;
+    --fondo-encabezado-pie: #343a40; /* Usando un gris oscuro del segundo fragmento */
+    --dorado-hover: #ffd700;
+    --sombra-sutil: 0 2px 5px rgba(0,0,0,0.2);
+    --sombra-prominente: 0 4px 8px rgba(0,0,0,0.1);
+    --borde-claro: 1px solid #ddd;
+    --fuente-base: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Unificando a la fuente del segundo fragmento */
 }
 
-/* Header Styles */
+/* Estilos generales del cuerpo */
+body {
+    font-family: var(--fuente-base);
+    margin: 0;
+    line-height: 1.6;
+    background-color: var(--fondo-gris-claro);
+    color: var(--texto-oscuro);
+    min-height: 100vh; /* Para asegurar que el footer se mantenga abajo */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Estilos del encabezado */
 header {
-    background-color: #333; /* Dark background for the header */
-    color: #fff; /* White text for the header */
-    padding: 1rem 0; /* Vertical padding */
-    text-align: center; /* Center align header content */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Subtle shadow for depth */
+    background-color: var(--fondo-encabezado-pie);
+    color: var(--texto-claro);
+    padding: 1rem 0;
+    text-align: center;
+    box-shadow: var(--sombra-sutil);
+    width: 100%; /* Asegura que el header ocupe todo el ancho */
+    position: relative; /* Para posibles elementos futuros */
+    z-index: 999; /* Asegura que el header esté por encima de otros elementos si hay superposiciones */
 }
 
 header h1 {
-    margin-bottom: 1rem; /* Space below the main title */
+    margin-bottom: 1rem;
 }
 
-/* Navigation Bar Styles */
+/* Estilos de la barra de navegación */
 nav ul {
-    list-style: none; /* Remove bullet points from list items */
+    list-style: none;
     padding: 0;
     margin: 0;
-    display: flex; /* Arrange list items in a row */
-    justify-content: center; /* Center the navigation links */
+    display: flex;
+    justify-content: center;
 }
 
 nav ul li {
-    margin: 0 15px; /* Horizontal space between nav items */
+    margin: 0 15px;
 }
 
 nav ul li a {
-    color: #fff; /* White link color */
-    text-decoration: none; /* Remove underline from links */
+    color: var(--texto-claro);
+    text-decoration: none;
     font-weight: bold;
-    transition: color 0.3s ease-in-out; /* Smooth color transition on hover */
+    transition: color 0.3s ease-in-out;
+    padding: 0.5rem 1rem; /* Añadido padding para un área de clic más grande */
+    border-radius: 4px; /* Suavizar las esquinas al pasar el ratón */
 }
 
 nav ul li a:hover {
-    color: #ffd700; /* Gold color on hover */
+    color: var(--dorado-hover);
+    background-color: rgba(255, 215, 0, 0.1); /* Ligero fondo al pasar el ratón */
 }
 
-/* Iframe Container Styles */
+/* Estilos del contenedor del iframe */
 iframe {
-    display: block; /* Ensures the iframe takes up its own line */
-    margin: 2rem auto; /* Center the iframe horizontally with vertical spacing */
-    max-width: 90%; /* Ensure iframe is responsive on smaller screens */
-    border: 1px solid #ddd; /* Light border around the iframe */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Slightly more prominent shadow */
+    display: block;
+    margin: 2rem auto;
+    max-width: 90%;
+    width: 800px; /* Establecer un ancho base para iframes */
+    height: 450px; /* Establecer una altura base para iframes */
+    border: var(--borde-claro);
+    box-shadow: var(--sombra-prominente);
+    border-radius: 8px; /* Bordes redondeados para el iframe */
+    background-color: var(--texto-claro); /* Fondo blanco para el iframe */
 }
 
-/* Footer Styles */
+/* Estilos del pie de página */
 footer {
     text-align: center;
     padding: 1rem 0;
-    background-color: #333; /* Dark background for the footer */
-    color: #fff; /* White text for the footer */
-    position: relative; /* Positioning for potential future elements */
-    bottom: 0;
+    background-color: var(--fondo-encabezado-pie);
+    color: var(--texto-claro);
+    margin-top: auto; /* Empuja el footer al final de la página */
     width: 100%;
-    margin-top: 2rem; /* Space above the footer */
+    box-shadow: var(--sombra-sutil); /* Sombra también en el footer */
+}
+
+/* Media query para pantallas más pequeñas */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    nav ul {
+        flex-direction: column; /* Apilar los enlaces de navegación */
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 10px 0; /* Espacio vertical entre los enlaces apilados */
+    }
+
+    iframe {
+        width: 100%; /* Hacer el iframe de ancho completo en pantallas pequeñas */
+        height: 300px; /* Ajustar la altura para pantallas pequeñas */
+    }
 }
